@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.foodmenu.FoodMenuActivity" />
+        <activity android:name=".ui.fooddetails.FoodDetailsActivity" />
+        <activity android:name=".ui.allergene.AllergeneSelectorActivity"></activity>
     </application>
 
 </manifest>

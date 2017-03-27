@@ -6,6 +6,9 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import hu.bme.iemqra.mobsoft.mobsoft.ui.allergene.AllergeneSelectorPresenter;
+import hu.bme.iemqra.mobsoft.mobsoft.ui.fooddetails.FoodDetailsPresenter;
+import hu.bme.iemqra.mobsoft.mobsoft.ui.foodmenu.FoodMenuPresenter;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.main.MainPresenter;
 
 /**
@@ -29,6 +32,24 @@ public class UIModule {
     @Singleton
     public MainPresenter provideMainPresenter() {
         return new MainPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public FoodMenuPresenter provideFoodMenuPresenter() {
+        return new FoodMenuPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public FoodDetailsPresenter provideFoodDetailsPresenter() {
+        return new FoodDetailsPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public AllergeneSelectorPresenter provideAllergenSelectorPresenter() {
+        return new AllergeneSelectorPresenter();
     }
 
 }
