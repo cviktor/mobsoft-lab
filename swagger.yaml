@@ -1,0 +1,199 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Étterem API
+  description: A Mobilszoftver labor Étterem API hivatalos leírása
+  version: "1.0.0"
+# the domain of the service
+host: api.restaurant.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /food:
+    get:
+      summary: The list of the food on the menu
+      description: |
+        Every food that is currently available in the restaurant.
+      tags:
+        - Foods
+      responses:
+        200:
+          description: An array of Food
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Food'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /food/{id}:
+    get:
+      summary: Details of a selected food
+      description: |
+        Gives back the detailed data for a selected food
+      parameters:
+        - name: id
+          in: path
+          description: Id of the food
+          required: true
+          type: number
+          format: integer
+      tags:
+        - Foods
+      responses:
+        200:
+          description: Detailed food intofmation
+          schema:
+            $ref: '#/definitions/Food'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /login:
+    post:
+      summary: Logs in a user
+      description: Logs in a user
+      tags:
+        - User
+      parameters:
+        - name: userName
+          in: query
+          description: Username
+          required: true
+          type: string
+        - name: password
+          in: query
+          description: Password
+          required: true
+          type: string
+      responses:
+        200:
+          description: Profile information for a user
+          schema:
+            $ref: '#/definitions/Profile'
+        403:
+          description: Incorrect user name or password
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /allergenes:
+    get:
+      summary: The list of the allergenes for the user
+      description: |
+        The allergene settins for the current user.
+      tags:
+        - Allergenes
+      parameters:
+        - name: sessionId
+          in: query
+          description: Session id
+          required: true
+          type: string
+      responses:
+        200:
+          description: An array of Allergenes
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Allergene'
+        403:
+          description: Unauthorized access
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Updates the allergene list
+      description: |
+        Updates the allergene settins for the current user.
+      tags:
+        - Allergenes
+      parameters:
+        - name: sessionId
+          in: query
+          description: Session id
+          required: true
+          type: string
+        - name: allergenes
+          in: body
+          description: An array of Allergenes
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Allergene'
+      responses:
+        200:
+          description: An array of Allergenes
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Allergene'
+        403:
+          description: Unauthorized access
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Food:
+    type: object
+    properties:
+      name:
+        type: string
+      descritpiton:
+        type: string
+      allergens:
+        type: array
+        items:
+              $ref: '#/definitions/Allergene'
+      ingredients:
+        type: array
+        items:
+              $ref: '#/definitions/Allergene'
+      id:
+        type: integer
+  Allergene:
+    type: object
+    properties:
+      name:
+        type: string
+      isAllergic:
+        type: boolean
+  Profile:
+    type: object
+    properties:
+      first_name:
+        type: string
+        description: First name of the user.
+      last_name:
+        type: string
+        description: Last name of the user.
+      session_id:
+        type: string
+        description: The session of this login.
+
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
