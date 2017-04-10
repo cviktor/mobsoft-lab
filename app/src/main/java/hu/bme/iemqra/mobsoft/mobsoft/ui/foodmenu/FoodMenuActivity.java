@@ -3,10 +3,13 @@ package hu.bme.iemqra.mobsoft.mobsoft.ui.foodmenu;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import hu.bme.iemqra.mobsoft.mobsoft.MobSoftApplication;
 import hu.bme.iemqra.mobsoft.mobsoft.R;
+import hu.bme.iemqra.mobsoft.mobsoft.model.Food;
 
 public class FoodMenuActivity extends AppCompatActivity implements FoodMenuScreen {
 
@@ -35,7 +38,7 @@ public class FoodMenuActivity extends AppCompatActivity implements FoodMenuScree
     }
 
     @Override
-    public void showFoodMenu() {
+    public void showFoodMenu(List<Food> foodList) {
 
     }
 }

@@ -6,4 +6,5 @@ package hu.bme.iemqra.mobsoft.mobsoft.ui.main;
 
 public interface MainScreen {
     void showMessage(String text);
+    void navigateToAllergenes();
 }

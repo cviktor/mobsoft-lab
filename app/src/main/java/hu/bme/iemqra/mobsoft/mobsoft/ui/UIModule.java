@@ -2,10 +2,14 @@ package hu.bme.iemqra.mobsoft.mobsoft.ui;
 
 import android.content.Context;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.greenrobot.event.EventBus;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.allergene.AllergeneSelectorPresenter;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.fooddetails.FoodDetailsPresenter;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.foodmenu.FoodMenuPresenter;
@@ -50,6 +54,18 @@ public class UIModule {
     @Singleton
     public AllergeneSelectorPresenter provideAllergenSelectorPresenter() {
         return new AllergeneSelectorPresenter();
+    }
+
+    @Provides
+    @Singleton
+    public EventBus provideEventBus() {
+        return EventBus.getDefault();
+    }
+
+    @Provides
+    @Singleton
+    public Executor provideExecutor() {
+        return Executors.newFixedThreadPool(1);
     }
 
 }

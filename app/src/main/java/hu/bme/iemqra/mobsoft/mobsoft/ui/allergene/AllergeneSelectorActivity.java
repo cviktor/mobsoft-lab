@@ -3,10 +3,13 @@ package hu.bme.iemqra.mobsoft.mobsoft.ui.allergene;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import hu.bme.iemqra.mobsoft.mobsoft.MobSoftApplication;
 import hu.bme.iemqra.mobsoft.mobsoft.R;
+import hu.bme.iemqra.mobsoft.mobsoft.model.Allergene;
 
 public class AllergeneSelectorActivity extends AppCompatActivity implements AllergeneSelectorScreen {
 
@@ -34,12 +37,7 @@ public class AllergeneSelectorActivity extends AppCompatActivity implements Alle
     }
 
     @Override
-    public void showAllergens() {
-
-    }
-
-    @Override
-    public void getAllergens() {
+    public void showAllergens(List<Allergene> allergeneList) {
 
     }
 }

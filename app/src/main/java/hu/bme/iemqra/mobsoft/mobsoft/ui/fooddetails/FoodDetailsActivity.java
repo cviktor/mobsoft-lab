@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import hu.bme.iemqra.mobsoft.mobsoft.MobSoftApplication;
 import hu.bme.iemqra.mobsoft.mobsoft.R;
+import hu.bme.iemqra.mobsoft.mobsoft.model.Food;
 
 public class FoodDetailsActivity extends AppCompatActivity implements FoodDetailsScreen {
 
@@ -35,7 +36,7 @@ public class FoodDetailsActivity extends AppCompatActivity implements FoodDetail
     }
 
     @Override
-    public void showFoodDetails() {
+    public void showFoodDetails(Food food) {
 
     }
 }
