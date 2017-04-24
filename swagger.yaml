@@ -56,6 +56,34 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+    post:
+      summary: Create or update food
+      description: |
+        Create or updates a food details in the database
+      parameters:
+        - name: id
+          in: path
+          description: Id of the food
+          required: true
+          type: number
+          format: integer
+        - name: food
+          in: body
+          description: The food
+          required: true
+          schema:
+              $ref: '#/definitions/Food'
+      tags:
+        - Foods
+      responses:
+        200:
+          description: Detailed food intofmation
+          schema:
+            $ref: '#/definitions/Food'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
   /login:
     post:
       summary: Logs in a user
@@ -77,7 +105,7 @@ paths:
         200:
           description: Profile information for a user
           schema:
-            $ref: '#/definitions/Profile'
+            $ref: '#/definitions/User'
         403:
           description: Incorrect user name or password
           schema:
@@ -155,7 +183,7 @@ definitions:
     properties:
       name:
         type: string
-      descritpiton:
+      details:
         type: string
       allergens:
         type: array
@@ -163,8 +191,8 @@ definitions:
               $ref: '#/definitions/Allergene'
       ingredients:
         type: array
-        items:
-              $ref: '#/definitions/Allergene'
+        items: 
+          type: string
       id:
         type: integer
   Allergene:
@@ -174,17 +202,17 @@ definitions:
         type: string
       isAllergic:
         type: boolean
-  Profile:
+  User:
     type: object
     properties:
-      first_name:
+      userName:
         type: string
-        description: First name of the user.
-      last_name:
-        type: string
-        description: Last name of the user.
+        description: Name of the user.
+      isAdmin:
+        type: boolean
+        description: Is the user an admin.
       session_id:
-        type: string
+        type: integer
         description: The session of this login.
 
   Error:
