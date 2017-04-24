@@ -41,25 +41,6 @@ public class Allergene   {
     this.isAllergic = isAllergic;
   }
 
-  
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Allergene allergene = (Allergene) o;
-    return Objects.equals(name, allergene.name) &&
-        Objects.equals(isAllergic, allergene.isAllergic);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, isAllergic);
-  }
 
   @Override
   public String toString() {

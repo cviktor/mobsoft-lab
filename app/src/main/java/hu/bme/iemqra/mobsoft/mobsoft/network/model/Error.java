@@ -55,26 +55,6 @@ public class Error   {
     this.fields = fields;
   }
 
-  
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Error error = (Error) o;
-    return Objects.equals(code, error.code) &&
-        Objects.equals(message, error.message) &&
-        Objects.equals(fields, error.fields);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(code, message, fields);
-  }
 
   @Override
   public String toString() {
