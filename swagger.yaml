@@ -3,7 +3,7 @@
 swagger: '2.0'
 info:
   title: Étterem API
-  description: A Mobilszoftver labor Étterem API hivatalos leírása
+  description: A Mobilszoftver labor Étterem API hivatalos leírása.
   version: "1.0.0"
 # the domain of the service
 host: api.restaurant.com
