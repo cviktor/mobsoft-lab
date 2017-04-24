@@ -7,6 +7,7 @@ import hu.bme.iemqra.mobsoft.mobsoft.interactor.InteractorModule;
 import hu.bme.iemqra.mobsoft.mobsoft.interactor.allergene.AllergeneInteractor;
 import hu.bme.iemqra.mobsoft.mobsoft.interactor.food.FoodInteractor;
 import hu.bme.iemqra.mobsoft.mobsoft.interactor.user.UserInteractor;
+import hu.bme.iemqra.mobsoft.mobsoft.mock.MockNetworkModule;
 import hu.bme.iemqra.mobsoft.mobsoft.network.NetworkModule;
 import hu.bme.iemqra.mobsoft.mobsoft.repository.RepositoryModule;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.UIModule;
@@ -24,7 +25,7 @@ import hu.bme.iemqra.mobsoft.mobsoft.ui.main.MainPresenter;
  */
 
 @Singleton
-@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, NetworkModule.class})
+@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, NetworkModule.class, MockNetworkModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
     void inject(FoodMenuActivity mainActivity);
