@@ -28,6 +28,9 @@ public class Food   {
   
   @SerializedName("id")
   private Integer id = null;
+
+  @SerializedName("price")
+  private Integer price = null;
   
 
   
@@ -83,6 +86,16 @@ public class Food   {
   }
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public Integer getPrice() {
+    return price;
+  }
+  public void setPrice(Integer price) {
+    this.price = price;
   }
 
 

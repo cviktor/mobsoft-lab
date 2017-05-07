@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     @Override
     public void navigateToAllergenes() {
         Intent i = new Intent(this, AllergeneSelectorActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
 

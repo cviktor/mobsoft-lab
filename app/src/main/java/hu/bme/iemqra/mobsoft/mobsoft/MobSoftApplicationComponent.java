@@ -25,7 +25,7 @@ import hu.bme.iemqra.mobsoft.mobsoft.ui.main.MainPresenter;
  */
 
 @Singleton
-@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, NetworkModule.class, MockNetworkModule.class})
+@Component(modules = {UIModule.class, RepositoryModule.class, InteractorModule.class, MockNetworkModule.class})
 public interface MobSoftApplicationComponent {
     void inject(MainActivity mainActivity);
     void inject(FoodMenuActivity mainActivity);

@@ -38,24 +38,24 @@ public class NetworkModule {
         return new Retrofit.Builder().baseUrl(NetworkConfig.SERVICE_ENDPOINT).client(client)
                 .addConverterFactory(GsonConverterFactory.create(GsonHelper.getGson())).build();
     }
-
-    @Provides
-    @Singleton
-    public AllergenesApi provideAllergenesApi(Retrofit retrofit) {
-        return retrofit.create(AllergenesApi.class);
-    }
-
-    @Provides
-    @Singleton
-    public FoodsApi provideFoodsApi(Retrofit retrofit) {
-        return retrofit.create(FoodsApi.class);
-    }
-
-    @Provides
-    @Singleton
-    public UserApi provideUserApi(Retrofit retrofit) {
-        return retrofit.create(UserApi.class);
-    }
+//
+//    @Provides
+//    @Singleton
+//    public AllergenesApi provideAllergenesApi(Retrofit retrofit) {
+//        return retrofit.create(AllergenesApi.class);
+//    }
+//
+//    @Provides
+//    @Singleton
+//    public FoodsApi provideFoodsApi(Retrofit retrofit) {
+//        return retrofit.create(FoodsApi.class);
+//    }
+//
+//    @Provides
+//    @Singleton
+//    public UserApi provideUserApi(Retrofit retrofit) {
+//        return retrofit.create(UserApi.class);
+//    }
 
 
 }

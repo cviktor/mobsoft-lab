@@ -6,4 +6,6 @@
     <string name="password">Jelszó</string>
     <string name="food_list_title">Étel lista</string>
     <string name="allergene_list_title">Allergén lista</string>
+    <string name="food_details_title">Étel adatai</string>
+    <string name="ingredients">Hozzávalók</string>
 </resources>

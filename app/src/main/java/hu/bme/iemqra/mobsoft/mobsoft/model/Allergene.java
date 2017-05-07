@@ -8,24 +8,24 @@ import com.orm.dsl.Table;
 
 @Table
 public class Allergene {
-    private Long id = null;
+    private int id;
     private String name;
     private Boolean isChecked;
 
     public Allergene() {
     }
 
-    public Allergene(Long id, String name, Boolean isChecked) {
+    public Allergene(int id, String name, Boolean isChecked) {
         this.id = id;
         this.name = name;
         this.isChecked = isChecked;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

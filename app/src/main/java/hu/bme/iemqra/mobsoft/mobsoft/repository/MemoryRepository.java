@@ -19,9 +19,8 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        Allergene a1 = new Allergene(1L,"Glutén", true);
-        Allergene a2 = new Allergene(1L,"Tej", false);
-
+        Allergene a1 = new Allergene(1,"Glutén", true);
+        Allergene a2 = new Allergene(2,"Tej", false);
 
         allergenes = new ArrayList<Allergene>();
         allergenes.add(a1);
@@ -48,7 +47,7 @@ public class MemoryRepository implements Repository {
         for (int i = 0; i < this.allergenes.size(); i++) {
             Allergene favourite = this.allergenes.get(i);
             for (Allergene todo : allergenes) {
-                if (todo.getId().equals(favourite.getId())) {
+                if (todo.getId() == favourite.getId()) {
                     this.allergenes.set(i, todo);
                 }
             }
