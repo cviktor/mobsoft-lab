@@ -22,6 +22,7 @@ public class AllergeneInteractor {
 
     public AllergeneInteractor(){
         MobSoftApplication.injector.inject(this);
+        repository.open(null);
     }
 
     public void getAllergenes() {

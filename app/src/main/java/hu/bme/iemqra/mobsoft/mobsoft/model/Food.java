@@ -10,6 +10,7 @@ public class Food {
     private int id;
     private String name;
     private String details;
+    private int price;
     private List<String> components;
     private List<Allergene> allergenes;
     private String imageUrl;
@@ -62,5 +63,13 @@ public class Food {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

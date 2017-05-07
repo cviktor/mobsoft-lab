@@ -71,4 +71,8 @@ public class AllergeneSelectorPresenter extends Presenter<AllergeneSelectorScree
             }
         }
     }
+
+    public void navigateToFoodMenu() {
+        screen.navigateToFoodMenu();
+    }
 }

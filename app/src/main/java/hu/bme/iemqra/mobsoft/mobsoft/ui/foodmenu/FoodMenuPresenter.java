@@ -66,4 +66,12 @@ public class FoodMenuPresenter extends Presenter<FoodMenuScreen> {
             }
         }
     }
+
+    public void navigateToAllergeneList() {
+        screen.navigateToAllergeneList();
+    }
+
+    public void navigateToFoodDetails(int id) {
+        screen.navigateToFoodDetails(id);
+    }
 }

@@ -10,4 +10,6 @@ import hu.bme.iemqra.mobsoft.mobsoft.model.Allergene;
 
 public interface AllergeneSelectorScreen {
     void showAllergens(List<Allergene> allergeneList);
+
+    void navigateToFoodMenu();
 }

@@ -10,4 +10,8 @@ import hu.bme.iemqra.mobsoft.mobsoft.model.Food;
 
 public interface FoodMenuScreen {
     void showFoodMenu(List<Food> foodList);
+
+    void navigateToAllergeneList();
+
+    void navigateToFoodDetails(int id);
 }

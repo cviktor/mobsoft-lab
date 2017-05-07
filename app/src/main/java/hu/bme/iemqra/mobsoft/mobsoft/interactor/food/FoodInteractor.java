@@ -1,5 +1,7 @@
 package hu.bme.iemqra.mobsoft.mobsoft.interactor.food;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
@@ -29,6 +31,13 @@ public class FoodInteractor {
 
         //TODO server call
 
+        ArrayList<Food> food = new ArrayList<Food>();
+        Food f = new Food();
+        f.setName("Asd");
+        f.setDetails("Details");
+        f.setPrice(4000);
+        food.add(f);
+        event.setFoodList(food);
         bus.post(event);
     }
 

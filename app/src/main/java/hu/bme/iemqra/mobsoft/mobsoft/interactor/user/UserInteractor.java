@@ -26,6 +26,8 @@ public class UserInteractor {
         UserChangedEvent event = new UserChangedEvent();
         //TODO server call
         User user = new User();
+        user.setUserName("Viktor");
+        event.setUser(user);
         repository.setUser(user);
         bus.post(event);
     }

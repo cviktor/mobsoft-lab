@@ -6,6 +6,8 @@ package hu.bme.iemqra.mobsoft.mobsoft;
 
 import android.app.Application;
 
+import com.orm.SugarContext;
+
 import hu.bme.iemqra.mobsoft.mobsoft.ui.UIModule;
 
 
@@ -19,5 +21,13 @@ public class MobSoftApplication extends Application {
 
         injector = DaggerMobSoftApplicationComponent.builder().
                         uIModule(new UIModule(this)).build();
+
+        SugarContext.init(getApplicationContext());
+    }
+
+    @Override
+    public void onTerminate() {
+        SugarContext.terminate();
+        super.onTerminate();
     }
 }
