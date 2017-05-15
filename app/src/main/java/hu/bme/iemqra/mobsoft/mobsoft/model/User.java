@@ -7,7 +7,7 @@ package hu.bme.iemqra.mobsoft.mobsoft.model;
 public class User {
     private Long id = null;
     private String userName;
-    private int isAdmin;
+    private boolean isAdmin;
 
     public String getUserName() {
         return userName;
@@ -17,11 +17,11 @@ public class User {
         this.userName = userName;
     }
 
-    public int getIsAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(int isAdmin) {
+    public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 

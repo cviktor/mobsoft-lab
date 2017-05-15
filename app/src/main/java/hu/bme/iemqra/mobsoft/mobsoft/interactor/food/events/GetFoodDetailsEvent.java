@@ -9,6 +9,7 @@ import hu.bme.iemqra.mobsoft.mobsoft.model.Food;
 public class GetFoodDetailsEvent {
     private Throwable throwable;
     private Food food;
+    private boolean editable;
 
     public Throwable getThrowable() {
         return throwable;
@@ -24,5 +25,13 @@ public class GetFoodDetailsEvent {
 
     public void setFood(Food food) {
         this.food = food;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 }

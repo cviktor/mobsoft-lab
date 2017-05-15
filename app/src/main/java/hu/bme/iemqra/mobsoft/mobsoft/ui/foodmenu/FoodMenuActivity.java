@@ -102,4 +102,9 @@ public class FoodMenuActivity extends AppCompatActivity implements FoodMenuScree
         i.putExtra("id", id);
         startActivity(i);
     }
+
+    @Override
+    public void navigateToLogin() {
+        finish();
+    }
 }

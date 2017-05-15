@@ -3,6 +3,7 @@ package hu.bme.iemqra.mobsoft.mobsoft.interactor.food;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -33,22 +34,24 @@ public class FoodInteractor {
     public void getFood(){
         GetFoodEvent event = new GetFoodEvent();
 
-        //TODO server call
+        try {
+           List<hu.bme.iemqra.mobsoft.mobsoft.network.model.Food> foods = api.foodGet().execute().body();
 
-        ArrayList<Food> food = new ArrayList<Food>();
-        Food f = new Food();
-        f.setName("Asd");
-        f.setDetails("Details");
-        f.setPrice(4000);
-        f.setId(1);
-        food.add(f);
-        event.setFoodList(food);
+            ArrayList<Food> food = new ArrayList<Food>();
+            for (hu.bme.iemqra.mobsoft.mobsoft.network.model.Food f : foods) {
+                food.add(toModel(f));
+            }
+            event.setFoodList(food);
+        } catch (IOException e) {
+            e.printStackTrace();
+            event.setThrowable(e);
+        }
+
         bus.post(event);
     }
 
     public void updateFood(Food food){
         UpdateFoodEvent event = new UpdateFoodEvent();
-        //TODO server call
 
         bus.post(event);
     }
@@ -58,29 +61,35 @@ public class FoodInteractor {
 
         try {
             hu.bme.iemqra.mobsoft.mobsoft.network.model.Food f = api.foodIdGet(new BigDecimal(id)).execute().body();
-            Food model = new Food();
-            model.setId(f.getId());
-            model.setName(f.getName());
-            model.setDetails(f.getDetails());
-            model.setPrice(f.getPrice());
-            model.setComponents(f.getIngredients());
 
-            ArrayList<Allergene> allergenes = new ArrayList<>();
-            for(hu.bme.iemqra.mobsoft.mobsoft.network.model.Allergene a : f.getAllergens()){
-                Allergene am = new Allergene();
-                am.setId(a.getId());
-                am.setName(a.getName());
-                am.setChecked(a.getIsAllergic());
-                allergenes.add(am);
-            }
-            model.setAllergenes(allergenes);
-
-            event.setFood(model);
+            event.setFood(toModel(f));
+            event.setEditable(true);
 
         } catch (IOException e) {
             event.setThrowable(e);
         }
         bus.post(event);
 
+    }
+
+    public Food toModel(hu.bme.iemqra.mobsoft.mobsoft.network.model.Food f){
+        Food model = new Food();
+        model.setId(f.getId());
+        model.setName(f.getName());
+        model.setDetails(f.getDetails());
+        model.setPrice(f.getPrice());
+        model.setComponents(f.getIngredients());
+
+        ArrayList<Allergene> allergenes = new ArrayList<>();
+        for(hu.bme.iemqra.mobsoft.mobsoft.network.model.Allergene a : f.getAllergens()){
+            Allergene am = new Allergene();
+            am.setId(a.getId());
+            am.setName(a.getName());
+            am.setChecked(a.getIsAllergic());
+            allergenes.add(am);
+        }
+        model.setAllergenes(allergenes);
+
+        return model;
     }
 }

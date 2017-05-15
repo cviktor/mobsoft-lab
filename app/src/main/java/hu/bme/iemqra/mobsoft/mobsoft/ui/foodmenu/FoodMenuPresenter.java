@@ -29,6 +29,8 @@ public class FoodMenuPresenter extends Presenter<FoodMenuScreen> {
     @Inject
     EventBus bus;
 
+    private boolean backToAllergene;
+
     public FoodMenuPresenter() {
     }
 
@@ -45,7 +47,7 @@ public class FoodMenuPresenter extends Presenter<FoodMenuScreen> {
         super.detachScreen();
     }
 
-    public void getFoodList(){
+    public void getFoodList() {
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -68,10 +70,17 @@ public class FoodMenuPresenter extends Presenter<FoodMenuScreen> {
     }
 
     public void navigateToAllergeneList() {
-        screen.navigateToAllergeneList();
+        if (backToAllergene)
+            screen.navigateToAllergeneList();
+        else
+            screen.navigateToLogin();
     }
 
     public void navigateToFoodDetails(int id) {
         screen.navigateToFoodDetails(id);
+    }
+
+    public void setBackToAllergene(boolean backToAllergene) {
+        this.backToAllergene = backToAllergene;
     }
 }

@@ -14,4 +14,6 @@ public interface FoodMenuScreen {
     void navigateToAllergeneList();
 
     void navigateToFoodDetails(int id);
+
+    void navigateToLogin();
 }

@@ -51,6 +51,14 @@
         android:inputType="textPassword"
         android:hint="@string/password"/>
 
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Force Crash!"
+        android:onClick="forceCrash"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/login_fab"
         android:layout_alignParentRight="true"

@@ -5,11 +5,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import javax.inject.Inject;
 
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     MainPresenter mainPresenter;
     private EditText userName;
     private EditText password;
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         });
 
         MobSoftApplication.injector.inject(this);
+
+        // Obtain the shared Tracker instance.
+        MobSoftApplication application = (MobSoftApplication) getApplication();
+        mTracker = application.getDefaultTracker();
     }
 
     @Override
@@ -57,6 +66,16 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     protected void onStop() {
         super.onStop();
         mainPresenter.detachScreen();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        Log.i("RESUME", "Setting screen name: " + MainActivity.class.getName());
+        mTracker.setScreenName("Image~" + MainActivity.class.getName());
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
     }
 
     @Override
@@ -76,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_food) {
             navigateToFoodMenu();
+            mTracker.send(new HitBuilders.EventBuilder()
+                    .setCategory("Action")
+                    .setAction("Food menu")
+                    .build());
         }
 
         return super.onOptionsItemSelected(item);
@@ -93,9 +116,14 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         startActivity(i);
     }
 
+    public void forceCrash(View view) {
+        throw new RuntimeException("This is a crash");
+    }
+
     @Override
     public void navigateToFoodMenu() {
         Intent i = new Intent(this, FoodMenuActivity.class);
+        i.putExtra("backToAllergene", false);
         startActivity(i);
     }
 }

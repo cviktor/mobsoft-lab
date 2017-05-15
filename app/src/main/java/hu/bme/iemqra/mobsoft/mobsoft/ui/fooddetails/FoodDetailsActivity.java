@@ -62,9 +62,11 @@ public class FoodDetailsActivity extends AppCompatActivity implements FoodDetail
     }
 
     @Override
-    public void showFoodDetails(Food food) {
+    public void showFoodDetails(Food food, boolean editable) {
         myToolbar.setTitle(food.getName());
+        allergenesAdapter.setEditable(editable);
         details.setText(food.getDetails());
+        details.setEnabled(editable);
 
         ingredientsAdapter.clear();
         ingredientsAdapter.addAll(food.getComponents());

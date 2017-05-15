@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hu.bme.iemqra.mobsoft.mobsoft">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".MobSoftApplication"
         android:allowBackup="true"
@@ -19,6 +22,9 @@
         <activity android:name=".ui.foodmenu.FoodMenuActivity" />
         <activity android:name=".ui.fooddetails.FoodDetailsActivity" />
         <activity android:name=".ui.allergene.AllergeneSelectorActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="527953f42d5fe35a34d7556df7f4ce26e2e424c0" />
     </application>
 
 </manifest>

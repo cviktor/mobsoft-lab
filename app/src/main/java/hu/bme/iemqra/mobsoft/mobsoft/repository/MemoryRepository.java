@@ -19,6 +19,12 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
+
+        user = new User();
+        user.setUserName("Viktor");
+        user.setId(12323L);
+        user.setIsAdmin(true);
+
         Allergene a1 = new Allergene(1,"Glutén", true);
         Allergene a2 = new Allergene(2,"Tej", false);
 

@@ -24,6 +24,8 @@ import hu.bme.iemqra.mobsoft.mobsoft.model.Allergene;
 
 public class AllergeneAdapter extends ArrayAdapter<Allergene> {
 
+    private boolean editable;
+
     public AllergeneAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Allergene> objects) {
         super(context, resource, objects);
     }
@@ -44,6 +46,7 @@ public class AllergeneAdapter extends ArrayAdapter<Allergene> {
             CheckBox item = (CheckBox) v.findViewById(R.id.allergene_list_item);
             item.setText(a.getName());
             item.setChecked(a.getChecked());
+            item.setEnabled(editable);
             item.setTag(a);
             item.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -54,5 +57,13 @@ public class AllergeneAdapter extends ArrayAdapter<Allergene> {
         }
 
         return v;
+    }
+
+    public boolean isEditable() {
+        return editable;
+    }
+
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 }

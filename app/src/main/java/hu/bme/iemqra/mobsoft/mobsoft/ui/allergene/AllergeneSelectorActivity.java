@@ -34,6 +34,7 @@ public class AllergeneSelectorActivity extends AppCompatActivity implements Alle
 
         ListView list = (ListView) findViewById(R.id.allergene_list);
         adapter = new AllergeneAdapter(this, 0, new ArrayList<Allergene>());
+        adapter.setEditable(true);
         list.setAdapter(adapter);
 
         MobSoftApplication.injector.inject(this);
@@ -83,6 +84,7 @@ public class AllergeneSelectorActivity extends AppCompatActivity implements Alle
     @Override
     public void navigateToFoodMenu() {
         Intent i = new Intent(this, FoodMenuActivity.class);
+        i.putExtra("backToAllergene", true);
         startActivity(i);
     }
 }

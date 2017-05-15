@@ -10,6 +10,7 @@ import hu.bme.iemqra.mobsoft.mobsoft.interactor.food.FoodInteractor;
 import hu.bme.iemqra.mobsoft.mobsoft.interactor.food.events.GetFoodDetailsEvent;
 import hu.bme.iemqra.mobsoft.mobsoft.interactor.food.events.GetFoodEvent;
 import hu.bme.iemqra.mobsoft.mobsoft.model.Food;
+import hu.bme.iemqra.mobsoft.mobsoft.repository.Repository;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.Presenter;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.foodmenu.FoodMenuPresenter;
 import hu.bme.iemqra.mobsoft.mobsoft.ui.foodmenu.FoodMenuScreen;
@@ -29,6 +30,9 @@ public class FoodDetailsPresenter extends Presenter<FoodDetailsScreen> {
 
     @Inject
     EventBus bus;
+
+    @Inject
+    Repository repository;
 
     public FoodDetailsPresenter(){
 
@@ -69,11 +73,12 @@ public class FoodDetailsPresenter extends Presenter<FoodDetailsScreen> {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
-                screen.showFoodDetails(null);
+                screen.showFoodDetails(null, false);
             }
         } else {
             if (screen != null) {
-                screen.showFoodDetails(event.getFood());
+                boolean admin = repository.getUser() != null && repository.getUser().getIsAdmin();
+                screen.showFoodDetails(event.getFood(), admin);
             }
         }
     }

@@ -7,5 +7,5 @@ import hu.bme.iemqra.mobsoft.mobsoft.model.Food;
  */
 
 public interface FoodDetailsScreen {
-    void showFoodDetails(Food food);
+    void showFoodDetails(Food food, boolean editable);
 }
